@@ -1,0 +1,11 @@
+{
+    "name": "lit-verify-nft-on-jwt",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "lit-js-sdk": "^1.1.25"
+    }
+  }
