@@ -6,10 +6,8 @@
 4. Verify the signature on that JWT (server side)
 
 # Usage
-``
+```
 yarn install
-
 yarn start
-
 visit http://127.0.0.1:3000/
-``
+```
