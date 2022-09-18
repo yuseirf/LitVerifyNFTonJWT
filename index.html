@@ -6,7 +6,7 @@
   <script onload='LitJsSdk.litJsSdkLoadedInALIT()' src="https://jscdn.litgateway.com/index.web.js"></script>
   <script>
     async function mintNft() {
-      document.getElementById('mintingStatus').innerText = "Minting, please wait for the tx to confirm..."
+      document.getElementById('mintingStatus').innerText = "NFTをmint中..."
 
       window.chain = document.getElementById('selectedChain').value
 
@@ -21,11 +21,11 @@
       window.tokenAddress = tokenAddress
       window.authSig = authSig
 
-      document.getElementById('mintingStatus').innerText = "Minted!  Tx hash: " + txHash
+      document.getElementById('mintingStatus').innerText = "NFTがmintされました!  Tx hash: " + txHash
     }
 
     async function provisionAccess() {
-      document.getElementById('provisioningStatus').innerText = "Provisioning, please wait..."
+      document.getElementById('provisioningStatus').innerText = "セットアップ中..."
       window.accessControlConditions = [
         {
           contractAddress: LitJsSdk.LIT_CHAINS[window.chain].contractAddress,
@@ -60,11 +60,11 @@
         authSig: window.authSig,
         resourceId: window.resourceId
       })
-      document.getElementById('provisioningStatus').innerText = "Provisioned!"
+      document.getElementById('provisioningStatus').innerText = "セットアップ完了!"
     }
 
     async function requestJwt() {
-      document.getElementById('requestingStatus').innerText = "Requesting JWT, please wait..."
+      document.getElementById('requestingStatus').innerText = "JWTをリクエスト中..."
 
       window.jwt = await litNodeClient.getSignedToken({
         accessControlConditions: window.accessControlConditions,
@@ -73,14 +73,14 @@
         resourceId: window.resourceId
       })
 
-      document.getElementById('requestingStatus').innerText = "JWT Obtained!  It is  " + window.jwt
+      document.getElementById('requestingStatus').innerText = "JWTが取得されました! JWT: " + window.jwt
 
     }
 
     async function verifyJwt() {
-      document.getElementById('verificationStatus').innerText = "Verifying, please wait..."
+      document.getElementById('verificationStatus').innerText = "JWTを検証中..."
       const data = await fetch('/verify?jwt=' + window.jwt).then(resp => resp.json())
-      document.getElementById('verificationStatus').innerText = "Verified!  Response is \n" + JSON.stringify(data, null, 2)
+      document.getElementById('verificationStatus').innerText = "検証が完了しました! Response: \n" + JSON.stringify(data, null, 2)
       document.getElementById('verificationNote').style = 'display: block;'
     }
   </script>
