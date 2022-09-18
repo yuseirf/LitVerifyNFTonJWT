@@ -1,6 +1,7 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="ja">
 <head>
+  <meta charset="utf-8">
   <title>Lit Verify NFT on JWT</title>
   <script onload='LitJsSdk.litJsSdkLoadedInALIT()' src="https://jscdn.litgateway.com/index.web.js"></script>
   <script>
@@ -41,6 +42,10 @@
           }
         }
       ]
+      
+      console.log('contractAddress: ', LitJsSdk.LIT_CHAINS[window.chain].contractAddress);
+      console.log('parameters:', window.tokenId.toString());
+
       const randomUrlPath = "/" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
       window.resourceId = {
         baseUrl: 'my-dynamic-content-server.com',
@@ -86,33 +91,33 @@
     Lit Verify NFT on JWT
   </h1>
 
-  <h2>Step 1: Mint an NFT</h2>
-  Chain to mint on:
+  <h2>1. NFTをmintする</h2>
+  NFTを発行するチェーンを選んで下さい: 
   <select id='selectedChain'>
     <option value='ethereum'>Ethereum</option>
     <option value='polygon'>Polygon</option>
   </select>
   <br />
   <br />
-  <button onclick="mintNft()">Mint NFT</button>
+  <button onclick="mintNft()">NFTをmintする</button>
   <br />
   <br />
   <div id='mintingStatus'></div>
 
-  <h2>Step 2: Provision access to a resource</h2>
-  <button onclick="provisionAccess()">Provision access</button>
+  <h2>2. データやリソースにアクセスできるようにセットアップ</h2>
+  <button onclick="provisionAccess()">セットアップ</button>
   <br />
   <br />
   <div id='provisioningStatus'></div>
 
-  <h2>Step 3: Request a JWT to authenticate the user</h2>
-  <button onclick="requestJwt()">Request JWT</button>
+  <h2>3. JWTをリクエスト</h2>
+  <button onclick="requestJwt()">JWTをリクエスト</button>
   <br />
   <br />
   <div id='requestingStatus'></div>
 
-  <h2>Step 4: Verify the JWT on the server</h2>
-  <button onclick="verifyJwt()">Verify the JWT</button>
+  <h2>4. JWTを検証</h2>
+  <button onclick="verifyJwt()">JWTを検証</button>
   <br />
   <br />
   <pre id='verificationStatus'></pre>
